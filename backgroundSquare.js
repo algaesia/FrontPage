@@ -1,7 +1,4 @@
-var BackgroundSquare = function(fileName, x, y, width, height) {
-	this.image = document.createElement("img");
-	this.image.src = fileName;
-	
+var BackgroundSquare = function(x, y, width, height) {	
 	this.position = new Vector2(x, y);
 	this.dimensions = new Vector2(width, height);
 	this.direction = new Vector2(0, 1);

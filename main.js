@@ -139,8 +139,6 @@ var onScreenSquares = [];
 var numLeftSquares = 40;
 for (var i = 0; i < numLeftSquares; ++i)
 {
-	var randIndex = Math.floor(Math.random() * 5);
-	var fileName = "square" + randIndex + ".png";
 	var minDim = 10;
 	var maxDim = 30;
 	var randDimX = minDim + Math.random() * (maxDim - minDim);
@@ -150,15 +148,13 @@ for (var i = 0; i < numLeftSquares; ++i)
 	var maxPosX = canvasWidth * 0.25;
 	var randPosX = minPosX + Math.random() * (maxPosX - minPosX);
 	var randPosY = randDimY + Math.random() * (canvasHeight - randDimY);
-	var temp = new BackgroundSquare(fileName, randPosX, randPosY, randDimX, randDimY);
+	var temp = new BackgroundSquare(randPosX, randPosY, randDimX, randDimY);
 	onScreenSquares.push(temp);
 }
 
 var numRightSquares = 40;
 for (var i = 0; i < numRightSquares; ++i)
 {
-	var randIndex = Math.floor(Math.random() * 5);
-	var fileName = "square" + randIndex + ".png";
 	var minDim = 10;
 	var maxDim = 30;
 	var randDimX = minDim + Math.random() * (maxDim - minDim);
@@ -168,7 +164,7 @@ for (var i = 0; i < numRightSquares; ++i)
 	var maxPosX = canvasWidth * 0.95
 	var randPosX = minPosX + Math.random() * (maxPosX - minPosX);
 	var randPosY = randDimY + Math.random() * (canvasHeight - randDimY);
-	var temp = new BackgroundSquare(fileName, randPosX, randPosY, randDimX, randDimY);
+	var temp = new BackgroundSquare(randPosX, randPosY, randDimX, randDimY);
 	onScreenSquares.push(temp);
 }
 
