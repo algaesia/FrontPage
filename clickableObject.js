@@ -16,6 +16,10 @@ var ClickableObject = function(x, y, width, height)
 				  Math.floor(Math.random() * 10);
 	this.currentColour = this.unhighlightedColour;
 	
+	this.unhighlightedTextColour = "#47B26B";
+	this.highlightedTextColour = "#D6D6FF";
+	this.currentTextColour = this.unhighlightedTextColour;
+	
 	this.position = new Vector2(x, y);
 	this.dimensions = new Vector2(width, height);
 	
@@ -33,8 +37,10 @@ var ClickableObject = function(x, y, width, height)
 ClickableObject.prototype.update = function(deltaTime) {
 	if (this.highlighted) {
 		this.currentColour = this.highlightedColour;
+		this.currentTextColour = this.highlightedTextColour;
 	} else {
 		this.currentColour = this.unhighlightedColour;
+		this.currentTextColour = this.unhighlightedTextColour;
 	}	
 }
 
@@ -47,13 +53,14 @@ ClickableObject.prototype.draw = function() {
 	context.restore();	
 	
 	context.font = "30px Verdana";
-	context.fillStyle = "#47B26B";
+	context.fillStyle = this.currentTextColour;
 	context.fillText(this.displayedName, this.position.x + this.dimensions.x, this.position.y + this.dimensions.y * 0.25);
 }
 
 ClickableObject.prototype.withinRange = function(x, y) {
 	var mousePos = new Vector2(x, y);
-	mousePos.subtract(this.position);
+	var displayedNameWidth = new Vector2(this.position.x + context.measureText(this.displayedName).width * 0.5, this.position.y);
+	mousePos.subtract(displayedNameWidth);
 	var dist = mousePos.length();
 	if (dist < this.dimensions.x * 0.5) {
 		return true;
